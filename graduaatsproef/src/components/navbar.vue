@@ -16,6 +16,7 @@ import { RouterLink } from "vue-router";
          <button class="bg-white border-gray-400 border-5 rounded-2xl text-black w-[49%] p-1 focus:bg-gray-600 focus:text-white text-base">
         Communities
     </button>
+    
 
     <button  class="bg-white border-gray-400 border-5 rounded-2xl text-black w-[49%] p-1 focus:bg-gray-600 focus:text-white text-base">
         Events
