@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="border-6 border-purple-300  rounded-3xl flex flex-col justify-end w-[20rem] h-104 bg-cover bg-center p-10 bg-[url('@/assets/community-imgs/MAI-HOME-hs.png')]"
+    class="border-6 border-purple-300  rounded-3xl flex flex-col justify-end w-[18rem] h-[30rem] bg-cover bg-center p-10 bg-[url('@/assets/community-imgs/MAI-HOME-hs.png')]"
   >
   <div class="flex flex-col gap-4">
     <h1 class="text-white font-bold text-2xl">MAI-HOME</h1>
