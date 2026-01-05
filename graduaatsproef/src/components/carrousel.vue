@@ -21,7 +21,7 @@ const slides = ref([
     community: 'Civic Tech Event 11 december',
     text: 'Onthullingen van de projecten HELP+ en OpenInzicht, gevierd met Pizza!',
     cta: 'Bekijk de recap!'
-  }
+  },
 ])
 
 // Slide determinatie
