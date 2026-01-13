@@ -5,6 +5,7 @@ import Navbar from  '@/components/navbar.vue'
 import Carrousel from './components/carrousel.vue';
 import CommunityCards from './components/community-cards.vue';
 import CommunityCardsSection from './components/community-cards-section.vue';
+import Footer from './components/footer.vue';
 
 </script>
 
@@ -15,6 +16,10 @@ import CommunityCardsSection from './components/community-cards-section.vue';
   
 
 <CommunityCardsSection/>
+
+
+  <Footer />
+
   <RouterView />
 </template>
 
