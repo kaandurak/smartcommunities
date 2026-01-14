@@ -8,14 +8,13 @@ import FooterImg from '../assets/footer/footer.webp'
             bg-cover bg-center bg-no-repeat"
      :style="{ backgroundImage: `url(${FooterImg})` }">
 
-  <!-- Container met grid -->
+
   <div class="col-start-2 col-span-10">
     
-    <!-- Logo + Links -->
+   
     <div class="mt-10">
       <img class="w-auto h-10" src="../assets/logo_pxl_bol_witrand.svg" alt="pxl-logo">
 
-<!-- Links -->
 <div class="mt-8 grid gap-x-4">
   
   <div class=" flex flex-wrap gap-x-8 gap-y-2 text-white">
