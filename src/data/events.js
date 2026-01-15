@@ -18,11 +18,13 @@ export const events = [
     },
     latestEvent: {
       image: carouselImg1,
+      color: 'rgba(50, 50, 120)',
       title: 'Van Kou naar Kracht!',
-      date: '4 Dec 2025',
+      date: '2025-12-04',
       location: 'Tilburg',
+      community: 'MAI-HOME',
+      text: 'Event in Tilburg, ivm MAI-HOME',
       cta: 'Bekijk recap',
-      color: 'rgba(50, 50, 120)'
     }
   },
   {
@@ -39,10 +41,12 @@ export const events = [
     latestEvent: {
       image: carouselImg2,
       title: 'Project Onthullingen!',
-      date: '11 Dec 2025',
-      location: 'Tilburg',
+      color: 'rgba(207, 0, 15)',
+      date: '2025-12-11',
+      location: 'Hasselt',
+      community: 'Code For Belgium',
+      text: 'Onthullingen van de projecten HELP+ en OpenInzicht, gevierd met Pizza!',
       cta: 'Bekijk recap',
-      color: 'rgba(207, 0, 15)'
     }
   },
  {
@@ -52,11 +56,13 @@ export const events = [
     latestEvent: {
       image: cardImg1,
       title: 'Lunch Event!',
-      date: '12 Jan 2026',
+      color: 'rgba(50, 50, 120)',
+      date: '2026-01-12',
       location: 'Bilzen Hoeselt',
+      community: 'MAI-HOME',
+      text: 'Samen lunchen met de MAI-HOME Community!',
       cta: 'Bekijk recap',
-      color: 'rgba(50, 50, 120)'
     }
   }
-  // add more events here
+  // Voeg hier meer Events toe!
 ]

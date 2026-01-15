@@ -1,7 +1,7 @@
 <script setup>
 import LatestEvents from '@/components/latest-events.vue'
 import { events } from '@/data/events.js'
-
+import EventDashboard from '@/components/eventdashboard.vue'
 
 const latestEvents = events.filter(e => e.latestEvent).map(e => e.latestEvent)
 
@@ -13,6 +13,9 @@ const latestEvents = events.filter(e => e.latestEvent).map(e => e.latestEvent)
       <h1 class="text-3xl font-bold mt-5 mb-4">Laatste Events</h1>
 
       <LatestEvents :events="latestEvents" />
+
+      <h1 class="text-3xl font-bold mt-20 mb-4">Event Kalender</h1>
+      <EventDashboard />
     </div>
   </div>
 </template>
