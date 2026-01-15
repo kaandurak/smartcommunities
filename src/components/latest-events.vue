@@ -1,8 +1,6 @@
 <script setup>
 import { defineProps } from 'vue'
-import { RouterLink } from "vue-router";
 
-// Props for dynamic events
 defineProps({
   events: {
     type: Array,
@@ -14,10 +12,11 @@ defineProps({
 <template>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div
-      v-for="(event, index) in events"
-      :key="index"
-      class="bg-white rounded-3xl overflow-hidden shadow-lg flex flex-col"
-    >
+  v-for="(event, index) in events"
+  :key="index"
+  class="bg-white rounded-3xl overflow-hidden shadow-lg flex flex-col border-5"
+  :style="{ borderColor: event.color.replace(')', ', 0.80)') }"
+>
       <div
         class="h-48 bg-cover bg-center"
         :style="{ backgroundImage: `url(${event.image})` }"
@@ -28,10 +27,14 @@ defineProps({
           <p class="text-gray-500 text-sm">{{ event.date }} – {{ event.location }}</p>
         </div>
         <button
-          class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          {{ event.cta }}
-        </button>
+  class="mt-4 text-white px-4 py-2 rounded-3xl transition border-5 border-gray-300"
+  :style="{
+    backgroundColor: event.color,
+    cursor: 'pointer',
+  }"
+>
+  {{ event.cta }}
+</button>
       </div>
     </div>
   </div>
