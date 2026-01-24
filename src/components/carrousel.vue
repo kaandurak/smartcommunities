@@ -103,7 +103,7 @@ onUnmounted(() => clearInterval(intervalId))
         <h1 class="text-4xl font-bold">{{ slide.title }}</h1>
         <h2 class="text-2xl font-bold mt-2.5">{{ slide.community }}</h2>
         <p class="mt-4 text-lg">{{ slide.text }}</p>
-        <button class="mt-6 bg-white text-black px-6 py-3 rounded-3xl border-5 border-b-gray-500">{{ slide.cta }}</button>
+        <button class="mt-6 bg-white text-black px-6 py-3 rounded-3xl border-5 border-gray-500">{{ slide.cta }}</button>
       </div>
     </div>
 
