@@ -1,8 +1,8 @@
 // src/data/events.js
 import carouselImg1 from '@/assets/carrousel-imgs/img1.webp'
 import carouselImg2 from '@/assets/carrousel-imgs/img2.webp'
-import cardImg1 from '@/assets/community-imgs/MAI-HOME-hs.png'
-import cardImg2 from '@/assets/community-imgs/Civic-Tech-hs.png'
+import cardImg1 from '@/assets/community-imgs/MAI-HOME-hs.webp'
+import cardImg2 from '@/assets/community-imgs/Civic-Tech-hs.webp'
 
 export const communities = [
   { name: 'MAI-HOME', color: 'rgb(50, 50, 120)' },

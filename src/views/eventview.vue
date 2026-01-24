@@ -10,11 +10,11 @@ const latestEvents = events.filter(e => e.latestEvent).map(e => e.latestEvent)
 <template>
   <div class="grid grid-cols-12">
     <div class="col-start-2 col-span-10">
-      <h1 class="text-3xl font-bold mt-5 mb-4">Laatste Events</h1>
+      <h1 class="text-3xl font-extrabold mt-5 mb-4">Laatste Events</h1>
 
       <LatestEvents :events="latestEvents" />
 
-      <h1 class="text-3xl font-bold mt-20 mb-4">Event Kalender</h1>
+      <h1 class="text-3xl font-extrabold mt-20 mb-4">Event Kalender</h1>
       <EventDashboard />
     </div>
   </div>

@@ -3,11 +3,11 @@
 import CommunityCards from './community-cards.vue';
 import { ref } from 'vue'
 
-import img1 from '../assets/community-imgs/MAI-HOME-hs.png'
-import img2 from '../assets/community-imgs/Civic-Tech-hs.png'
-import img3 from '../assets/community-imgs/Women-in-Science-hs.png'
-import img4 from '../assets/community-imgs/AIDOPT-hs.png'
-import img5 from '../assets/community-imgs/LLASER-hs.png'
+import img1 from '../assets/community-imgs/MAI-HOME-hs.webp'
+import img2 from '../assets/community-imgs/Civic-Tech-hs.webp'
+import img3 from '../assets/community-imgs/Women-in-Science-hs.webp'
+import img4 from '../assets/community-imgs/AIDOPT-hs.webp'
+import img5 from '../assets/community-imgs/LLASER-hs.webp'
 
 let cards=ref([
     {
@@ -55,7 +55,7 @@ let cards=ref([
       
  <div class="grid grid-cols-12">
   <div class="col-start-2 col-span-10">
-    <h1 class="text-3xl font-bold mt-20">
+    <h1 class="text-3xl font-extrabold mt-20">
       Communities
     </h1>
 
