@@ -4,7 +4,7 @@ import FooterImg from '../assets/footer/footer.webp'
 </script>
 
 <template>
-<div class="p-5 shadow-2xl mt-20 grid grid-cols-12
+<div class="p-5 shadow-2xl mt-0 grid grid-cols-12
             bg-cover bg-center bg-no-repeat"
      :style="{ backgroundImage: `url(${FooterImg})` }">
 

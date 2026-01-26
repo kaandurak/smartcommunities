@@ -15,7 +15,7 @@ const latestEvents = events.filter(e => e.latestEvent).map(e => e.latestEvent)
       <LatestEvents :events="latestEvents" />
 
       <h1 class="text-3xl font-extrabold mt-20 mb-4">Event Kalender</h1>
-      <EventDashboard />
+      <EventDashboard class="mb-20"/>
     </div>
   </div>
 </template>
