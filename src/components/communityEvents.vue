@@ -40,12 +40,12 @@ const hasMore = computed(() => {
   return communityEvents.value.length > displayLimit.value
 })
 
-
+// Desktop grid class
 const gridCols = computed(() => {
   const count = displayedEvents.value.length
-  if (count === 1) return 'grid-cols-1'
-  if (count === 2) return 'grid-cols-2'
-  return 'grid-cols-3'
+  if (count === 1) return 'md:grid-cols-1'
+  if (count === 2) return 'md:grid-cols-2'
+  return 'md:grid-cols-3'
 })
 
 function loadMore() {
@@ -74,7 +74,8 @@ function formatDate(dateString) {
         
         <div v-if="communityEvents.length > 0" class="space-y-6">
          
-          <div class="grid gap-6" :class="gridCols">
+          <!-- Mobile: 1 column | Desktop: dynamic columns -->
+          <div class="grid gap-6 grid-cols-1" :class="gridCols">
             <div
               v-for="event in displayedEvents"
               :key="event.id"

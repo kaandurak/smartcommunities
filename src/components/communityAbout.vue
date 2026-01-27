@@ -18,13 +18,13 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-white py-16 mb-0">
+  <div class="bg-white py-16">
     <div class="grid grid-cols-12 gap-8">
       <div class="col-start-2 col-span-10">
-       
-        <div class="flex gap-8 mb-20">
+        
+        <div class="flex flex-col md:flex-row gap-8 mb-">
           
-          <div class="flex-shrink-0">
+          <div class="hidden md:flex flex-shrink-0 items-center justify-center">
             <img 
               :src="about.what.image" 
               :alt="about.what.title"
@@ -33,13 +33,14 @@ defineProps({
             />
           </div>
           
+        
           <div class="flex-1 flex flex-col gap-8">
             <div>
-              <h2 class="text-2xl font-bold mb-4">{{ about.what.title }}</h2>
+              <h2 class="text-3xl font-bold mb-4">{{ about.what.title }}</h2>
               <p class="text-lg leading-relaxed text-gray-700">{{ about.what.text }}</p>
             </div>
             <div>
-              <h2 class="text-2xl font-bold mb-4">{{ about.who.title }}</h2>
+              <h2 class="text-3xl font-bold mb-4">{{ about.who.title }}</h2>
               <p class="text-lg leading-relaxed text-gray-700">{{ about.who.text }}</p>
             </div>
           </div>

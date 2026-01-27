@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getCommunityById } from '@/data/communities.js'
 import CommunityHeader from '@/components/communityHeader.vue'
+import CommunityMobileNav from '@/components/communityMobileNav.vue'
 import CommunityHero from '@/components/communityHero.vue'
 import CommunityAbout from '@/components/communityAbout.vue'
 import CommunityMedia from '@/components/communityMedia.vue'
@@ -34,6 +35,9 @@ const community = computed(() => {
       :community-secondary-color="community.secondaryColor"
     />
     
+    <!-- Mobile Navigation - only visible on mobile -->
+    <CommunityMobileNav :community-color="community.color" />
+    
     <section id="hero">
       <CommunityHero 
         :hero="community.hero" 
@@ -43,7 +47,7 @@ const community = computed(() => {
       />
     </section>
     
-    <section id="about mb-0">
+    <section id="about">
       <CommunityAbout 
         :about="community.about"
         :community-color="community.color"
@@ -51,12 +55,13 @@ const community = computed(() => {
       />
     </section>
     
-    <section id="media mt-0">
+    <section id="media">
       <CommunityMedia 
         :albums="community.albums" 
         :social="community.social"
         :community-color="community.color"
         :community-secondary-color="community.secondaryColor"
+        :community-name="community.name"
       />
     </section>
     
