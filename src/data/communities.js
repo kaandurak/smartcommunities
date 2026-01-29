@@ -1,8 +1,24 @@
-import maiHomeHero from '@/assets/community-imgs/MAI-HOME-hs.webp'
+import maiHomeCard from '@/assets/community-imgs/MAI-HOME-hs.webp'
+import maiHomeCover from '@/assets/mai-home-imgs/mai-home-cover.webp'
+import maiHomeHero from '@/assets/mai-home-imgs/mai-home-hero.webp'
+import maiHomeQR from '@/assets/mai-home-imgs/mai-home-qr.webp'
+import knk from '@/assets/mai-home-imgs/kou-naar-kracht.webp'
+import knk2 from '@/assets/mai-home-imgs/kou-naar-kracht2.webp'
+import cl from '@/assets/mai-home-imgs/commlunch0.webp'
+import cl2 from '@/assets/mai-home-imgs/commlunch.webp'
+import cl3 from '@/assets/mai-home-imgs/commlunch2.webp'
+import th from '@/assets/mai-home-imgs/theater.webp'
+import th2 from '@/assets/mai-home-imgs/theater1.webp'
+import th3 from '@/assets/mai-home-imgs/theater2.webp'
+
 import civicTechHero from '@/assets/community-imgs/Civic-Tech-hs.webp'
+
 import womenInScienceCard from '@/assets/community-imgs/Women-in-Science-hs.webp'
+
 import aidoptCard from '@/assets/community-imgs/AIDOPT-hs.webp'
+
 import llaserCard from '@/assets/community-imgs/LLASER-hs.webp'
+
 
 export const communities = [
   {
@@ -10,7 +26,7 @@ export const communities = [
     name: 'MAI-HOME',
     color: 'rgb(50, 50, 120)',
     secondaryColor: 'rgb(76, 76, 147)',
-    cardImage: maiHomeHero,
+    cardImage: maiHomeCard,
     cardDescription: 'Bespaar energie aan de hand van AI!',
     cardBorderColor: 'rgba(192, 73, 255, 0.8)',
     
@@ -22,7 +38,7 @@ export const communities = [
       what: {
         title: 'Wat is MAI-HOME?',
         text: 'Na renovaties blijft CO₂-reductie vaak uit door gedragseffecten, zoals het reboundeffect, waardoor technologie of investeringen alleen niet volstaan om duurzame resultaten te behalen. MAI-HOME helpt bewoners met AI om inzicht te krijgen in hun energiegebruik en biedt praktische ondersteuning en tips, zodat energiekosten lager worden en de CO₂-uitstoot van woningen daadwerkelijk daalt.',
-        image: maiHomeHero
+        image: maiHomeCover
       },
       who: {
         title: 'Voor wie is het?',
@@ -31,25 +47,28 @@ export const communities = [
     },
     
     albums: [
-      {
-        id: 1,
-        title: 'Event 09 september 2025: Lunch, energie besparende tips en theater!',
-        coverImage: maiHomeHero,
-        images: [maiHomeHero]
-      },
-      {
-        id: 2,
-        title: 'Event 04 december 2025: Van Kou naar Kracht',
-        coverImage: maiHomeHero,
-        images: [maiHomeHero]
-      },
-      {
-        id: 3,
-        title: 'Event 12 januari 2026: Community Lunch',
-        coverImage: maiHomeHero,
-        images: [maiHomeHero]
-      }
-    ],
+  {
+    id: 1,
+    eventId: 1,  // Links to Event 1: "Van Kou naar Kracht!" (Dec 4)
+    title: 'Event 04 december 2025: Van Kou naar Kracht',
+    coverImage: knk,
+    images: [knk, knk2]
+  },
+  {
+    id: 2,
+    eventId: 3,  // Links to Event 3: "Lunch Event!" (Jan 12)
+    title: 'Event 12 januari 2026: Community Lunch',
+    coverImage: cl,
+    images: [cl, cl2, cl3 ]
+  },
+  {
+    id: 3,
+    // No eventId - this is just a general album
+    title: 'Event 09 september 2025: Lunch, energie besparende tips en theater!',
+    coverImage: th,
+    images: [th, th2, th3]
+  }
+],
     
     social: {
       instagram: {
@@ -59,7 +78,7 @@ export const communities = [
     },
     
     contact: {
-      whatsappQR: maiHomeHero,
+      whatsappQR: maiHomeQR,
       whatsappLink: 'https://chat.whatsapp.com/CgcnWtX...'
     }
   },

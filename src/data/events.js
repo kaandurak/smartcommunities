@@ -16,61 +16,58 @@ export const events = [
   {
     // Event 1
     id: 1,
-    carousel: {
-      image: carouselImg1,
-      color: 'rgba(50, 50, 120)',
-      title: 'Van Kou naar Kracht!',
-      community: 'MAI-HOME Event 4 december',
-      text: 'Event in Tilburg, ivm MAI-HOME',
-      cta: 'Bekijk de recap!'
-    },
-    latestEvent: {
-      image: carouselImg1,
-      color: 'rgb(50, 50, 120)',
-      title: 'Van Kou naar Kracht!',
-      date: '2025-12-04',
-      location: 'Tilburg',
-      community: 'MAI-HOME',
-      text: 'Event in Tilburg, ivm MAI-HOME',
-      cta: 'Bekijk recap',
-    }
+    showInCarousel: true,
+    showInLatest: true,
+    image: carouselImg1,
+    color: 'rgb(50, 50, 120)',
+    title: 'Van Kou naar Kracht!',
+    date: '2025-12-04',
+    location: 'Tilburg',
+    community: 'MAI-HOME',
+    text: 'Event in Tilburg, ivm MAI-HOME',
+    cta: 'Bekijk de recap!'
   },
   {
     // Event 2
     id: 2,
-    carousel: {
-      image: carouselImg2,
-      color: 'rgba(207, 0, 15)',
-      title: 'Project Onthullingen!',
-      community: 'Civic Tech Event 11 december',
-      text: 'Onthullingen van de projecten HELP+ en OpenInzicht, gevierd met Pizza!',
-      cta: 'Bekijk de recap!'
-    },
-    latestEvent: {
-      image: carouselImg2,
-      title: 'Project Onthullingen!',
-      color: 'rgb(207, 0, 15)',
-      date: '2025-12-11',
-      location: 'Hasselt',
-      community: 'Code For Belgium',
-      text: 'Onthullingen van de projecten HELP+ en OpenInzicht, gevierd met Pizza!',
-      cta: 'Bekijk recap',
-    }
+    showInCarousel: true,
+    showInLatest: true,
+    image: carouselImg2,
+    color: 'rgb(207, 0, 15)',
+    title: 'Project Onthullingen!',
+    date: '2025-12-11',
+    location: 'Hasselt',
+    community: 'Code For Belgium',
+    text: 'Onthullingen van de projecten HELP+ en OpenInzicht, gevierd met Pizza!',
+    cta: 'Bekijk de recap!'
   },
   {
     // Event 3
     id: 3,
-    carousel: null,
-    latestEvent: {
-      image: cardImg1,
-      title: 'Lunch Event!',
-      color: 'rgb(50, 50, 120)',
-      date: '2026-01-12',
-      location: 'Bilzen Hoeselt',
-      community: 'MAI-HOME',
-      text: 'Samen lunchen met de MAI-HOME Community!',
-      cta: 'Bekijk recap',
-    }
-  }
+    showInCarousel: false,
+    showInLatest: true,
+    image: cardImg1,
+    color: 'rgb(50, 50, 120)',
+    title: 'Lunch Event!',
+    date: '2026-01-12',
+    location: 'Bilzen Hoeselt',
+    community: 'MAI-HOME',
+    text: 'Samen lunchen met de MAI-HOME Community!',
+    cta: 'Bekijk recap'
+  },
+  {
+    // Event 4
+    id: 4,
+    showInCarousel: false,
+    showInLatest: false,
+    image: carouselImg1,
+    color: 'rgb(50, 50, 120)',
+    title: 'Theater',
+    date: '2025-09-09',
+    location: 'Bilzen-Hoeselt',
+    community: 'MAI-HOME',
+    text: 'Event in Bilzen-Hoeselt, ivm MAI-HOME',
+    cta: 'Bekijk de recap!'
+  },
   // Voeg hier meer Events toe!
 ]

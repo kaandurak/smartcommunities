@@ -1,6 +1,7 @@
 <script setup>
-import { ref, computed, defineProps } from 'vue'
+import { ref, computed, defineProps, defineEmits } from 'vue'
 import { events } from '@/data/events.js'
+import EventModal from './eventModal.vue'
 
 const props = defineProps({
   communityName: {
@@ -14,21 +15,25 @@ const props = defineProps({
   communitySecondaryColor: {
     type: String,
     required: true
+  },
+  albums: {
+    type: Array,
+    default: () => []
   }
 })
 
+const emit = defineEmits(['openAlbum'])
+
 const displayLimit = ref(3)
+const selectedEvent = ref(null)
 
 const communityEvents = computed(() => {
   return events
-    .filter(e => {
-      const community = e.latestEvent?.community || e.carousel?.community
-      return community === props.communityName
-    })
+    .filter(e => e.community === props.communityName)
     .sort((a, b) => {
-      const dateA = new Date(a.latestEvent?.date || 0)
-      const dateB = new Date(b.latestEvent?.date || 0)
-      return dateB - dateA 
+      const dateA = new Date(a.date || 0)
+      const dateB = new Date(b.date || 0)
+      return dateB - dateA
     })
 })
 
@@ -40,7 +45,6 @@ const hasMore = computed(() => {
   return communityEvents.value.length > displayLimit.value
 })
 
-// Desktop grid class
 const gridCols = computed(() => {
   const count = displayedEvents.value.length
   if (count === 1) return 'md:grid-cols-1'
@@ -50,6 +54,30 @@ const gridCols = computed(() => {
 
 function loadMore() {
   displayLimit.value += 3
+}
+
+function openEvent(event) {
+  selectedEvent.value = event
+}
+
+function closeEvent() {
+  selectedEvent.value = null
+}
+
+function handleOpenAlbum(event) {
+  console.log('Looking for album for event:', event.id)
+  console.log('Available albums:', props.albums)
+  
+  // Find album by event ID
+  const album = props.albums.find(a => a.eventId === event.id)
+  
+  if (album) {
+    console.log('Found album:', album)
+    emit('openAlbum', album)
+  } else {
+    console.log('No album found for event ID:', event.id)
+    alert('Geen foto album gevonden voor dit event')
+  }
 }
 
 function formatDate(dateString) {
@@ -74,43 +102,43 @@ function formatDate(dateString) {
         
         <div v-if="communityEvents.length > 0" class="space-y-6">
          
-          <!-- Mobile: 1 column | Desktop: dynamic columns -->
           <div class="grid gap-6 grid-cols-1" :class="gridCols">
-            <div
+            <button
               v-for="event in displayedEvents"
               :key="event.id"
-              class="rounded-3xl overflow-hidden shadow-lg h-[216px]"
+              @click="openEvent(event)"
+              class="rounded-3xl overflow-hidden shadow-lg h-[216px] transition hover:shadow-2xl hover:scale-[1.02] cursor-pointer"
               :style="{ backgroundColor: communityColor, opacity: 0.9 }"
             >
               <div class="grid grid-cols-2 h-full">
               
                 <div class="col-span-1 h-full">
-                  <img 
-                    :src="event.latestEvent?.image || event.carousel?.image" 
-                    :alt="event.latestEvent?.title || event.carousel?.title"
+                  <img
+                    :src="event.image"
+                    :alt="event.title"
                     class="w-full h-full object-cover"
                   />
                 </div>
-                
+
                 <div class="col-span-1 p-4 flex flex-col justify-between text-white h-full">
                   <div>
                     <p class="text-xl font-bold mb-1">
-                      {{ formatDate(event.latestEvent?.date).split(' ')[0] }} 
-                      {{ formatDate(event.latestEvent?.date).split(' ')[1].slice(0, 3) }}
+                      {{ formatDate(event.date).split(' ')[0] }}
+                      {{ formatDate(event.date).split(' ')[1].slice(0, 3) }}
                     </p>
                     <p class="text-lg font-bold mb-2">
-                      {{ formatDate(event.latestEvent?.date).split(' ')[2] }}
+                      {{ formatDate(event.date).split(' ')[2] }}
                     </p>
                     <h3 class="text-sm font-semibold mt-2 line-clamp-2">
-                      {{ event.latestEvent?.title || event.carousel?.title }}
+                      {{ event.title }}
                     </h3>
                     <p class="text-xs mt-1">
-                      {{ event.latestEvent?.location }}
+                      {{ event.location }}
                     </p>
                   </div>
                 </div>
               </div>
-            </div>
+            </button>
           </div>
           
           <button
@@ -128,6 +156,14 @@ function formatDate(dateString) {
         </div>
       </div>
     </div>
+    
+    <!-- Event Modal -->
+    <EventModal 
+      :event="selectedEvent" 
+      :community-color="communityColor"
+      @close="closeEvent"
+      @open-album="handleOpenAlbum"
+    />
   </div>
 </template>
 

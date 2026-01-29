@@ -1,5 +1,9 @@
 <script setup>
 import { defineProps } from 'vue'
+import { useRouter } from 'vue-router'
+import { getCommunityByName } from '@/data/communities.js'
+
+const router = useRouter()
 
 defineProps({
   events: {
@@ -11,14 +15,39 @@ defineProps({
 function formatDateLong(dateString) {
   if (!dateString) return ''
   const d = new Date(dateString)
-  const day = d.getDate()                
+  const day = d.getDate()
   const monthNames = [
     'januari', 'februari', 'maart', 'april', 'mei', 'juni',
     'juli', 'augustus', 'september', 'october', 'november', 'december'
   ]
-  const month = monthNames[d.getMonth()] 
+  const month = monthNames[d.getMonth()]
   const year = d.getFullYear()
   return `${day} ${month} ${year}`
+}
+
+function handleEventClick(event) {
+  const community = getCommunityByName(event.community)
+  if (!community) {
+    console.error('Community not found:', event.community)
+    return
+  }
+
+  // Find album by eventId
+  const album = community.albums.find(a => a.eventId === event.id)
+
+  if (album) {
+    // Navigate to community page with albumId query param
+    router.push({
+      path: `/community/${community.id}`,
+      query: { albumId: album.id }
+    })
+  } else {
+    // Just navigate to community page media section
+    router.push({
+      path: `/community/${community.id}`,
+      hash: '#media'
+    })
+  }
 }
 </script>
 
@@ -40,6 +69,7 @@ function formatDateLong(dateString) {
           <p class="text-gray-500 text-sm"> {{ formatDateLong(event.date) }} – {{ event.location }}</p>
         </div>
         <button
+  @click="handleEventClick(event)"
   class="mt-4 text-white px-4 py-2 rounded-3xl transition border-5 border-gray-300"
   :style="{
     backgroundColor: event.color,

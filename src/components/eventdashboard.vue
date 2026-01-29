@@ -1,6 +1,10 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { events, communities as communityList } from '@/data/events.js'
+import { getCommunityByName } from '@/data/communities.js'
+
+const router = useRouter()
 
 const selectedDate = ref(null)
 const selectedCommunity = ref('Allemaal')
@@ -11,36 +15,33 @@ const communities = computed(() => {
 
 const filteredEvents = computed(() => {
   if (selectedCommunity.value === 'Allemaal') return events
-  return events.filter(e => {
-    const community = e.latestEvent?.community || e.carousel?.community
-    return community === selectedCommunity.value
-  })
+  return events.filter(e => e.community === selectedCommunity.value)
 })
 
 const calendarAttributes = computed(() => {
   try {
     return filteredEvents.value
       .map((e, idx) => {
-        const d = e.latestEvent?.date
+        const d = e.date
         if (!d) return null
         const dateObj = new Date(d)
         if (isNaN(dateObj)) return null
         const id = e.id ?? `event-fallback-${idx}`
-        const color = e.latestEvent?.color || e.carousel?.color || '#3b82f6'
-        
+        const color = e.color || '#3b82f6'
+
         return {
           key: `event-${id}-${d}`,
           id,
           dates: [dateObj],
-          popover: { label: e.latestEvent?.title || '' },
+          popover: { label: e.title || '' },
           customData: e,
-          
+
           highlight: {
             style: {
               backgroundColor: color,
             },
             contentStyle: {
-              color: 'white !important', 
+              color: 'white !important',
               fontWeight: 'bold'
             }
           },
@@ -58,44 +59,44 @@ const currentEvent = computed(() => {
   console.log('=== currentEvent computed running ===')
   console.log('selectedDate.value:', selectedDate.value)
   console.log('filteredEvents.value:', filteredEvents.value)
-  
+
   if (!selectedDate.value) {
     console.log('No date selected')
     return null
   }
-  
+
   const sel = new Date(selectedDate.value)
   console.log('sel Date object:', sel)
-  
+
   if (isNaN(sel)) {
     console.log('Invalid date')
     return null
   }
-  
+
   const selYear = sel.getFullYear()
   const selMonth = String(sel.getMonth() + 1).padStart(2, '0')
   const selDay = String(sel.getDate()).padStart(2, '0')
   const selIso = `${selYear}-${selMonth}-${selDay}`
-  
+
   console.log('Selected date ISO:', selIso)
-  
+
   const found = filteredEvents.value.find(e => {
     console.log('Checking event:', e)
-    const d = e.latestEvent?.date
+    const d = e.date
     console.log('Event date string:', d)
     if (!d) return false
-    
+
     const eventDate = new Date(d)
     const eventYear = eventDate.getFullYear()
     const eventMonth = String(eventDate.getMonth() + 1).padStart(2, '0')
     const eventDay = String(eventDate.getDate()).padStart(2, '0')
     const eventIso = `${eventYear}-${eventMonth}-${eventDay}`
-    
+
     console.log('Event ISO:', eventIso, 'Match?', eventIso === selIso)
-    
+
     return eventIso === selIso
   })
-  
+
   console.log('Found event:', found)
   return found || null
 })
@@ -120,16 +121,43 @@ function onDayClick(day) {
 
 const ctaText = computed(() => {
   if (!currentEvent.value) return ''
-  const eventDate = new Date(currentEvent.value.latestEvent.date)
+  const eventDate = new Date(currentEvent.value.date)
   return eventDate > new Date() ? 'Deelnemen' : 'Bekijk recap'
 })
 
 function getCommunityColor(community) {
-  if (community === 'All') return '#6b7280' 
-  
-  
+  if (community === 'All') return '#6b7280'
+
+
   const communityData = communityList.find(c => c.name === community)
   return communityData?.color || '#3b82f6'
+}
+
+function handleEventClick() {
+  if (!currentEvent.value) return
+
+  const community = getCommunityByName(currentEvent.value.community)
+  if (!community) {
+    console.error('Community not found:', currentEvent.value.community)
+    return
+  }
+
+  // Find album by eventId
+  const album = community.albums.find(a => a.eventId === currentEvent.value.id)
+
+  if (album) {
+    // Navigate to community page with albumId query param
+    router.push({
+      path: `/community/${community.id}`,
+      query: { albumId: album.id }
+    })
+  } else {
+    // Just navigate to community page media section
+    router.push({
+      path: `/community/${community.id}`,
+      hash: '#media'
+    })
+  }
 }
 </script>
 
@@ -137,25 +165,25 @@ function getCommunityColor(community) {
   <div class="grid grid-cols-12 gap-6" style="grid-auto-rows: 1fr; align-items: stretch;">
     
     <div class="col-span-12 md:col-span-4 bg-white p-4 rounded-3xl shadow-lg border-5 flex flex-col h-full"
-         :style="{ borderColor: currentEvent ? currentEvent.latestEvent.color : '#9ca3af' }">
+         :style="{ borderColor: currentEvent ? currentEvent.color : '#9ca3af' }">
       <div class="flex-1 flex flex-col overflow-hidden">
         <div v-if="currentEvent" class="flex flex-col h-full">
-          <div v-if="currentEvent.latestEvent.image" class="mb-4 flex-shrink-0">
+          <div v-if="currentEvent.image" class="mb-4 flex-shrink-0">
             <img
-              :src="currentEvent.latestEvent.image"
-              :alt="currentEvent.latestEvent.title"
+              :src="currentEvent.image"
+              :alt="currentEvent.title"
               class="w-full h-40 md:h-48 object-cover rounded-2xl"
             />
           </div>
 
           <div class="flex-shrink-0">
-            <h2 class="text-xl font-bold">{{ currentEvent.latestEvent.title }}</h2>
-            <p class="text-gray-500">{{ formatDateLong(currentEvent.latestEvent.date) }} – {{ currentEvent.latestEvent.location }}</p>
+            <h2 class="text-xl font-bold">{{ currentEvent.title }}</h2>
+            <p class="text-gray-500">{{ formatDateLong(currentEvent.date) }} – {{ currentEvent.location }}</p>
           </div>
-          
-         
+
+
           <div class="mt-4 flex-1 overflow-hidden">
-            <p class="line-clamp-3">{{ currentEvent.latestEvent.text || 'No additional info' }}</p>
+            <p class="line-clamp-3">{{ currentEvent.text || 'No additional info' }}</p>
           </div>
         </div>
         <div v-else class="flex items-center justify-center h-full">
@@ -166,8 +194,9 @@ function getCommunityColor(community) {
       <div class="mt-4 flex-shrink-0">
         <button
           v-if="currentEvent"
+          @click="handleEventClick"
           class="w-full text-white px-4 py-2 rounded-3xl transition border-5 border-gray-300"
-          :style="{ backgroundColor: currentEvent.latestEvent.color }"
+          :style="{ backgroundColor: currentEvent.color }"
         >
           {{ ctaText }}
         </button>

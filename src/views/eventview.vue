@@ -3,7 +3,7 @@ import LatestEvents from '@/components/latest-events.vue'
 import { events } from '@/data/events.js'
 import EventDashboard from '@/components/eventdashboard.vue'
 
-const latestEvents = events.filter(e => e.latestEvent).map(e => e.latestEvent)
+const latestEvents = events.filter(e => e.showInLatest)
 
 </script>
 

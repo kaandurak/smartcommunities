@@ -28,8 +28,8 @@ const props = defineProps({
 const selectedAlbum = ref(null)
 
 const displayAlbums = computed(() => {
-  const customAlbums = props.albums.slice(0, 3)
-  
+  const customAlbums = props.albums
+
   const allImages = props.albums.flatMap(album => album.images)
   const allPhotosAlbum = {
     id: 'all-photos',
@@ -37,7 +37,7 @@ const displayAlbums = computed(() => {
     coverImage: props.albums[0]?.coverImage || '',
     images: allImages.length > 0 ? allImages : [props.albums[0]?.coverImage || '']
   }
-  
+
   return [...customAlbums, allPhotosAlbum]
 })
 

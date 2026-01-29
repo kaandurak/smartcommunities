@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { events } from '@/data/events.js'
 
-const slides = ref(events.filter(e => e.carousel).map(e => e.carousel))
+const slides = ref(events.filter(e => e.showInCarousel))
 
 
 // Slide determinatie
