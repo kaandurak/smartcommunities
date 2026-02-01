@@ -12,6 +12,7 @@ import th2 from '@/assets/mai-home-imgs/theater1.webp'
 import th3 from '@/assets/mai-home-imgs/theater2.webp'
 
 import civicTechHero from '@/assets/community-imgs/Civic-Tech-hs.webp'
+import linkc from '@/assets/codeforbelgium-imgs/link-cover.webp'
 
 import womenInScienceCard from '@/assets/community-imgs/Women-in-Science-hs.webp'
 
@@ -78,8 +79,10 @@ export const communities = [
     },
     
     contact: {
-      whatsappQR: maiHomeQR,
-      whatsappLink: 'https://chat.whatsapp.com/CgcnWtX...'
+      title: 'Neem deel aan de MAI-HOME Whatsapp community',
+      buttonText: 'Join WhatsApp',
+      image: maiHomeQR,
+      link: 'https://chat.whatsapp.com/CgcnWtX...'
     }
   },
 
@@ -125,8 +128,10 @@ export const communities = [
     },
     
     contact: {
-      whatsappQR: civicTechHero,
-      whatsappLink: 'https://chat.whatsapp.com/...'
+      title: 'Bezoek de Code For Belgium website',
+      buttonText: 'Bezoek Website',
+      image: linkc,
+      link: 'https://codeforbelgium.org'
     }
   },
 
@@ -165,8 +170,10 @@ export const communities = [
     },
     
     contact: {
-      whatsappQR: civicTechHero,
-      whatsappLink: 'https://chat.whatsapp.com/...'
+      title: 'Bezoek de Women in Science website',
+      buttonText: 'Bezoek Website',
+      image: womenInScienceCard,
+      link: 'https://womeninscience.be'
     }
   },
 
@@ -205,8 +212,10 @@ export const communities = [
     },
     
     contact: {
-      whatsappQR: civicTechHero,
-      whatsappLink: 'https://chat.whatsapp.com/...'
+      title: 'Bezoek de AIdopt website',
+      buttonText: 'Bezoek Website',
+      image: aidoptCard,
+      link: 'https://aidopt.be'
     }
   },
 
@@ -245,8 +254,10 @@ export const communities = [
     },
     
     contact: {
-      whatsappQR: civicTechHero,
-      whatsappLink: 'https://chat.whatsapp.com/...'
+      title: 'Bezoek de Live by your own Code website',
+      buttonText: 'Bezoek Website',
+      image: llaserCard,
+      link: 'https://llaser.be'
     }
   }
 ]
