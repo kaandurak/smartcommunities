@@ -202,6 +202,7 @@ export const communities = [
       // Large banner image at top of detail page
       // Location: /public/images/women-in-science/hero.webp
       image: '/images/women-in-science/hero.webp',
+      image: '/images/women-in-science/brunch1.webp',
     },
 
     about: {
