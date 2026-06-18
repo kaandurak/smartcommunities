@@ -1,0 +1,99 @@
+=====================================
+IMAGE MANAGEMENT GUIDE
+=====================================
+
+This guide explains how to manage images for the Communities website.
+
+FOLDER STRUCTURE:
+----------------
+All images are stored in:
+  /public/images/[community-name]/
+
+Communities:
+  - mai-home
+  - code-for-belgium
+  - women-in-science
+  - aidopt
+  - llaser
+
+Each folder has a README.txt file explaining what images are needed.
+
+HOW TO UPDATE AN IMAGE:
+----------------------
+1. Navigate to the community folder:
+   Example: /public/images/mai-home/
+
+2. Replace the existing image with your new image
+   - IMPORTANT: Keep the same filename!
+   - Use .webp format for best performance
+
+3. Refresh your browser to see the changes
+   - You may need to do a hard refresh (Ctrl+F5 or Cmd+Shift+R)
+
+HOW TO ADD NEW EVENT PHOTOS:
+---------------------------
+1. Place your new images in the community folder
+   Example: /public/images/mai-home/new-event-photo.webp
+
+2. Open the communities data file:
+   File location: /src/data/communities.js
+
+3. Find the community section you want to update
+
+4. Add a new album entry:
+   {
+     id: 4,  // Use next available ID
+     title: 'Your Event Title',
+     coverImage: '/images/mai-home/new-event-photo.webp',
+     images: [
+       '/images/mai-home/new-event-photo.webp',
+       '/images/mai-home/new-event-photo2.webp'
+     ]
+   }
+
+5. Save the file and refresh your browser
+
+IMAGE REQUIREMENTS:
+------------------
+- Format: .webp (preferred) or .jpg/.png
+- Size: Recommended 1920x1080 or higher for hero images
+- Card images: Should be 1:1 aspect ratio (square)
+- File names: Use descriptive names with no spaces
+  Good: event-2025-photo.webp
+  Bad: Event Photo 2025.webp
+
+COMMON TASKS:
+------------
+Task: Change the hero image for MAI-HOME
+1. Go to /public/images/mai-home/
+2. Replace mai-home-hero.webp with your new image
+3. Refresh browser
+
+Task: Change a community card image
+1. Go to /public/images/[community-name]/
+2. Replace card.webp with your new image
+3. Refresh browser
+
+Task: Change WhatsApp QR code
+1. Go to /public/images/mai-home/
+2. Replace mai-home-qr.webp with your new QR code
+3. Refresh browser
+
+Task: Change contact section image for a community
+1. Go to /public/images/[community-name]/
+2. Look at README.txt to see which file is used for contact
+3. Replace that file with your new image
+4. Refresh browser
+
+TROUBLESHOOTING:
+---------------
+Problem: Image doesn't update after replacing file
+Solution: Hard refresh your browser (Ctrl+F5 or Cmd+Shift+R)
+
+Problem: Image doesn't appear at all
+Solution: Check that:
+  - The filename matches exactly (including .webp extension)
+  - The file is in the correct folder
+  - The path in communities.js is correct
+
+Need help? Contact the developer!
