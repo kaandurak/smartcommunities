@@ -7,6 +7,10 @@ const props = defineProps({
     type: Array,
     required: true
   },
+  generalImages: {
+    type: Array,
+    default: () => []
+  },
   social: {
     type: Object,
     required: true
@@ -30,12 +34,12 @@ const selectedAlbum = ref(null)
 const displayAlbums = computed(() => {
   const customAlbums = props.albums
 
-  const allImages = props.albums.flatMap(album => album.images)
+  const allImages = [...props.albums.flatMap(album => album.images), ...props.generalImages]
   const allPhotosAlbum = {
     id: 'all-photos',
     title: `Alle ${props.communityName} foto's`,
-    coverImage: props.albums[0]?.coverImage || '',
-    images: allImages.length > 0 ? allImages : [props.albums[0]?.coverImage || '']
+    coverImage: props.albums[0]?.coverImage || allImages[0] || '',
+    images: allImages
   }
 
   return [...customAlbums, allPhotosAlbum]

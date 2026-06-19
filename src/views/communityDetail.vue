@@ -93,8 +93,9 @@ watch(() => route.query.albumId, () => {
     </section>
     
     <section id="media">
-      <CommunityMedia 
-        :albums="community.albums" 
+      <CommunityMedia
+        :albums="community.albums"
+        :general-images="community.generalImages || []"
         :social="community.social"
         :community-color="community.color"
         :community-secondary-color="community.secondaryColor"

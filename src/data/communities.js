@@ -98,6 +98,9 @@ export const communities = [
       }
     ],
 
+    // Images that appear only in the "all photos" album, not in any named album
+    generalImages: [],
+
     social: {
       instagram: {
         username: 'MAI-HOME',
@@ -169,6 +172,9 @@ export const communities = [
       }
     ],
 
+    // Images that appear only in the "all photos" album, not in any named album
+    generalImages: [],
+
     social: {
       instagram: {
         username: 'codeforbelgium',
@@ -217,12 +223,27 @@ export const communities = [
       }
     },
 
-    albums: [],
+    albums: [
+      {
+        id: 1,
+        title: 'Community Brunch',
+        coverImage: '/images/mai-home/commlunch0.webp',
+        images: [
+          '/images/women-in-science/brunch1.webp',
+          '/images/women-in-science/brunch2.webp',
+          '/images/women-in-science/brunch3.webp',
+        ]
+      },
+
+    ],
+
+    // Images that appear only in the "all photos" album, not in any named album
+    generalImages: [],
 
     social: {
       instagram: {
-        username: 'civictech',
-        url: 'https://www.instagram.com/civictech/'
+        username: 'PXL Smart ICT',
+        url: 'https://www.instagram.com/pxlsmartict/'
       }
     },
 
@@ -268,10 +289,15 @@ export const communities = [
 
     albums: [],
 
+    // Images that appear only in the "all photos" album, not in any named album
+    generalImages: [
+      '/images/aidopt/hero.webp',
+    ],
+
     social: {
       instagram: {
-        username: 'opendata',
-        url: 'https://www.instagram.com/opendata/'
+        username: 'PXL Smart ICT',
+        url: 'https://www.instagram.com/pxlsmartict/'
       }
     },
 
@@ -317,10 +343,15 @@ export const communities = [
 
     albums: [],
 
+    // Images that appear only in the "all photos" album, not in any named album
+    generalImages: [
+      '/images/llaser/hero.webp',
+    ],
+
     social: {
       instagram: {
-        username: 'techforgood',
-        url: 'https://www.instagram.com/techforgood/'
+        username: 'PXL Smart ICT',
+        url: 'https://www.instagram.com/pxlsmartict/'
       }
     },
 
